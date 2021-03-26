@@ -1,5 +1,5 @@
 # Copyright (c) 2020 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
-config SHIELD_ THOTH
+config SHIELD_THOTH
 	def_bool $(shields_list_contains,thoth)
