@@ -6,7 +6,4 @@ if SHIELD_THOTH
 config ZMK_KEYBOARD_NAME
 	default "thoth"
 	
-config ZMK_USB
-	default y
-	
 endif
