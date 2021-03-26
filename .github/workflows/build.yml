@@ -33,17 +33,17 @@ jobs:
         run: west update
       - name: West Zephyr export
         run: west zephyr-export
-      - name: West Build (makerdiary M60)
-        run: west build -s zmk/app -b nice_nano -- -DSHIELD=m60 -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
-      - name: makerdiary M60 DTS File
+      - name: West Build (thoth)
+        run: west build -s zmk/app -b nice_nano -- -DSHIELD=thoth -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+      - name: thoth DTS File
         if: ${{ always() }}
         run: cat -n build/zephyr/nice_nano.dts.pre.tmp
-      - name: makerdiary M60 Kconfig file
+      - name: thoth Kconfig file
         run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
       - name: Rename zmk.uf2
-        run: cp build/zephyr/zmk.uf2 m60_nice_nano.uf2
-      - name: Archive (makerdiary M60)
+        run: cp build/zephyr/zmk.uf2 thoth_nice_nano.uf2
+      - name: Archive (thoth)
         uses: actions/upload-artifact@v2
         with:
           name: firmware
-          path: m60_nice_nano.uf2
+          path: thoth_nice_nano.uf2
